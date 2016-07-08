@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- Configurações de conexão com o SGBD local -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost/retaguarda</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">ti34649000</property>
+
+		<!-- Pool de conexões -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+		<!-- Gerenciamento do contexto das sessões -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Desativa a cache de segundo nível -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+		<!-- Mostra os comandos SQL no console -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+
+		<!-- Valida tabelas no banco -->
+		<property name="hbm2ddl.auto">update</property>
+
+		<!-- Mapeamento das entidades -->
+		<mapping class="br.com.rabelo.smartserver.domain.Cargo" />
+		<mapping class="br.com.rabelo.smartserver.domain.Colaborador" />
+
+		<mapping class="br.com.rabelo.smartserver.domain.EcfAliquotas" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfCaixa" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfConfiguracao" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfContador" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfDocumentosEmitidos" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfEmpresa" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfFechamento" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfFuncionario" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfImpressora" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfMovimento" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfPosicaoComponentes" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfRecebimentoNaoFiscal" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfRecebimentoNaoFiscalPagamento" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfResolucao" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfSangria" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfSuprimento" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfTipoPagamento" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfTipoRecebimentoNaoFiscal" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfTipoRelatorioGerencial" />
+		<mapping class="br.com.rabelo.smartserver.domain.EcfTurno" />
+
+		<mapping class="br.com.rabelo.smartserver.domain.Funcionario" />
+		<mapping class="br.com.rabelo.smartserver.domain.Papel" />
+		<mapping class="br.com.rabelo.smartserver.domain.PapelFuncao" />
+		<mapping class="br.com.rabelo.smartserver.domain.Pessoa" />
+		<mapping class="br.com.rabelo.smartserver.domain.PessoaEndereco" />
+		<mapping class="br.com.rabelo.smartserver.domain.Setor" />
+		<mapping class="br.com.rabelo.smartserver.domain.SituacaoPessoa" />
+		<mapping class="br.com.rabelo.smartserver.domain.TipoEndereco" />
+		<mapping class="br.com.rabelo.smartserver.domain.Usuario" />
+		
+	</session-factory>
+
+</hibernate-configuration>

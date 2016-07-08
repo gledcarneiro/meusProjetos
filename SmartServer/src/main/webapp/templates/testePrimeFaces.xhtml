@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Titulo da aba</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Titulo da tela">
+			<p:dataTable emptyMessage="Nenhum registro encontrado"
+				paginator="true">
+				<f:facet name="header">
+					<p:commandButton value="Novo" oncomplete="PF('cadastro').show();" />
+				</f:facet>
+				<p:column headerText="Coluna1">
+				</p:column>
+				<p:column headerText="Coluna2">
+				</p:column>
+				<p:column headerText="Opções">
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+	<p:dialog header="Cadastro" widgetVar="cadastro" draggable="false"
+		resizable="false" modal="true" closable="false">
+		<h:form>
+			<h:panelGrid columns="3">
+				<!-- para campo texto -->
+				<p:outputLabel value="Descrição:" />
+				<p:inputText maxlength="50" size="30" />
+
+				<!-- required e requiredMessage -> tratamento de campos vazios -->
+				<!-- converterMessage -> evita letras em campos numericos -->
+				<!-- f:validateLongRange ou f:validateDoubleRange -> valida um intervalo de valor no campo -->
+				<!-- validatorMessage -> informa o intervalo do campo ao usuario -->
+				<!-- para campo short -->
+				<p:outputLabel value="Quantidade:" />
+				<p:inputText maxlength="5" size="10" required="true"
+					requiredMessage="O campo quantidade é obrigatorio"
+					converterMessage="Valor invalido no campo 'Quantidade'"
+					validatorMessage="O valor deve ser maior que 0 e menor que 100">
+					<f:validateLongRange minimum="0" maximum="99" />
+				</p:inputText>
+				<!-- para campo real (soma os caracteres com a virgula)-->
+				<p:outputLabel value="Preço:" />
+				<p:inputText maxlength="7" size="10" required="true"
+					requiredMessage="o campo preço é obrigatorio"
+					converterMessage="Valor invalido no campo 'Preço'"
+					validatorMessage="O valor deve ser maior que 0,01 e menor que 100,00">
+					<f:convertNumber locale="pt_BR" minFractionDigits="2" />
+					<f:validateDoubleRange minimum="0.00" maximum="99.99" />
+				</p:inputText>
+
+				<!-- para chave estrangeira -->
+				<p:outputLabel value="Nome" />
+				<p:selectOneMenu filter="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um estado" />
+				</p:selectOneMenu>
+				<!-- para campo data -->
+				<p:outputLabel value="Data de Cadastro" />
+				<p:calendar />
+				<!-- para campo boolean -->
+				<p:outputLabel value="Ativo" />
+				<p:selectBooleanCheckbox />
+				<!-- para senha -->
+				<p:outputLabel value="Senha:" />
+				<p:password maxlength="8" size="10" />
+				<!-- para um radioGoup -->
+				<p:outputLabel value="Tipo" />
+				<p:selectOneRadio>
+					<f:selectItem itemValue="A" itemLabel="Administrado" />
+					<f:selectItem itemValue="G" itemLabel="Gerente" />
+					<f:selectItem itemValue="U" itemLabel="Usuario" />
+				</p:selectOneRadio>
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" />
+				<p:commandButton value="Cancelar"
+					oncomplete="PF('cadastro').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

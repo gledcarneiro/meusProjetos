@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SmartServer</title>
+	<h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+<h:body>
+	<p:growl id="mensagem" />
+	<div id="geral">
+		<div id="topo" class="divTopo">
+			<p:graphicImage library="images" name="SmartServer.jpg"
+				styleClass="imagemCentralizada" />
+		</div>
+		<!-- rendered="#{autenticacaoBean.temPermissoes(['91031','91001'])}" -->
+		<div id="cabecalho">
+			<h:form id="formMenu">
+				<p:menubar>
+
+					<p:submenu label="Cadastro" icon="ui-icon-contact">
+						<p:menuitem value="Turno" url="/pages/turno.xhtml" />
+						<p:menuitem value="Aliquotas" url="/pages/aliquotas.xhtml" />
+						<p:menuitem value="Caixa" url="/pages/caixa.xhtml" />
+						<p:menuitem value="Configuracao" url="/pages/configuracao.xhtml" />
+						<p:menuitem value="Contador" url="/pages/contador.xhtml" />
+						<p:menuitem value="Documento Emitidos" url="/pages/documento.xhtml" />
+						<p:menuitem value="Empresa" url="/pages/empresa.xhtml" />
+						<p:menuitem value="Fechamento" url="/pages/fechamento.xhtml" />
+						<p:menuitem value="Funcionario" url="/pages/funcionario.xhtml" />
+						<p:menuitem value="Impressora" url="/pages/impressora.xhtml" />
+					</p:submenu>
+
+					<p:submenu label="Movimentação" icon="ui-icon-gear">
+						<p:menuitem value="Movimento" url="/pages/movimento.xhtml" />
+						<p:menuitem value="Posicao Componentes" url="/pages/posicaoComponente.xhtml" />
+						<p:submenu label="Recebimentos" icon="ui-icon-gear">
+							<p:menuitem value="Recebimento Não Fiscal" url="/pages/recebimentoNaoFiscal.xhtml" />
+							<p:menuitem value="Recebimento Não Fiscal Pagamento" url="/pages/recebimentoNaoFiscalPagamento.xhtml" />
+						</p:submenu>
+						<p:menuitem value="Resolução" url="/pages/resolucao.xhtml" />
+						<p:menuitem value="Sangria" url="/pages/sangria.xhtml" />
+						<p:menuitem value="Suprimento" url="/pages/suprimento.xhtml" />
+						<p:submenu label="Tipos" icon="ui-icon-gear">
+							<p:menuitem value="Tipo de Pagamento" url="/pages/tipoPagamento.xhtml" />
+							<p:menuitem value="Tipo de Recebimento não Fiscal" url="/pages/tipoRecebimentoNaoFiscal.xhtml" />
+							<p:menuitem value="Tipo de Relatorio Gerencial" url="/pages/tipoRelatorioGerencial.xhtml" />
+						</p:submenu>
+					</p:submenu>
+
+					<p:submenu label="Ajuda" icon="ui-icon-help">
+						<p:menuitem value="Sobre" />
+						<p:menuitem value="Dados" url="/pages/dados.xhtml" />
+					</p:submenu>
+                    
+                    <p:menuitem value="Fechar" url="/pages/principal.xhtml" icon="ui-icon-close" />
+					
+					<f:facet name="options">
+						<h:outputText
+							value="Usuario: #{autenticacaoBean.usuarioLogado.login}" />
+						<!-- p:commandButton type="button" value="Logout" icon="ui-icon-extlink" /-->
+					</f:facet>
+
+				</p:menubar>
+			</h:form>
+		</div>
+
+		<div id="conteudo">
+			<ui:insert name="conteudo" />
+		</div>
+	</div>
+
+</h:body>
+</html>

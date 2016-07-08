@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/templates/modelo.xhtml">
+	<ui:define name="conteudo">
+		
+		<script type="text/javascript">
+			var host = "ws://localhost:8080/fj26-notas-fiscais/apuracao"
+			var wSocket = new WebSocket(host);
+			var browserSupport = ("WebSocket" in window) ? true : false;
+			if (browserSupport) {
+				wSocket.onopen = function() {
+					//alert(" Web Socket is connected, sending data");
+					wSocket.send("ping");
+				};
+			} else {
+				// The browser doesn't support WebSocket
+				alert("WebSocket is NOT supported by your Browser!");
+			}
+			// called when a message is received
+			wSocket.onmessage = function(event) {
+				var received_msg = event.data;
+// 				console.log(received_msg);
+//				var serie = JSON.parse(received_msg);
+//				console.log(serie)
+ 				alert('server msg:' + received_msg);
+//				var grafico = PF('grafico');
+				
+//				grafico.plot.replot({ series : serie});
+			};
+			// called when socket closes
+			wSocket.onclose = function() {
+				// websocket is closed.
+				console.log("Connection is closed...");
+			};
+		</script>
+		
+		<h:form id="formlogin">
+			<h2>Dados de Apuração</h2>
+		<!-- 
+			<h:messages styleClass="erros" />
+			<p:chart type="pie" model="#{dadosBean.dados}" widgetVar="grafico" />
+			 -->
+			<fieldset>
+				<legend>Resultado parcial</legend>
+				 <h:outputText
+			value="Bem vindo #{dadosBean.dados}." />
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
